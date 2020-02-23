@@ -1,0 +1,7 @@
+{
+  "files.exclude": {
+    ".tscache": true,
+    "gen": true,
+    "lib": true
+  }
+}
