@@ -1,6 +1,6 @@
 {
   "name": "@cley_faye/http-codes-consts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Constants for HTTP error codes",
   "main": "lib/codes.js",
   "scripts": {
