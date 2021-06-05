@@ -44,9 +44,7 @@ const labelToNameCamel = (label: string): string => label.replace(
  * Convert result to a TypeScript string
  */
 const transformResToTypescript = (res: Array<CodeDefinition>): string => {
-  const codes = res.map(({
-    name, code,
-  }) => `"${name}" = ${code}`).join(",\n");
+  const codes = res.map(({name, code}) => `"${name}" = ${code}`).join(",\n");
   return `enum HttpCodes {\n${codes}\n}\nexport default HttpCodes;`;
 };
 
@@ -57,7 +55,7 @@ ensureDir(OUTPUT_DIRECTORY)
     return readFile(CODE_LIST_FILE, "utf8");
   })
   .then<Array<Array<string>>>(promiseParse)
-  .then((csvRows) => csvRows.slice(1).reduce<Array<CodeDefinition>>(
+  .then(csvRows => csvRows.slice(1).reduce<Array<CodeDefinition>>(
     (result, row) => {
       const [
         codeStr,
@@ -86,11 +84,11 @@ ensureDir(OUTPUT_DIRECTORY)
     },
     [],
   ))
-  .then((res) => {
+  .then(res => {
     const outputContent = transformResToTypescript(res);
     console.log(`Writting output into "${OUTPUT_FILEPATH}"`);
     return writeFile(OUTPUT_FILEPATH, outputContent);
   })
-  .catch((error) => {
+  .catch(error => {
     console.error(error);
   });

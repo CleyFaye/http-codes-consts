@@ -1,17 +1,17 @@
 const loadGruntTasks = require("load-grunt-tasks");
 const {readFileSync} = require("fs");
 
-const readLicenseForJS = (filename) => {
-  const content = readFileSync(filename, "utf8");
-  const prefixedLines = content.trim().split("\n")
-    .map((line) => ` * ${line}`);
-  return `/*!\n${prefixedLines.join("\n")}\n */\n`;
-};
-
-const LICENSE = readLicenseForJS("LICENSE");
+const licenseJS = [
+  "/**",
+  " * @license",
+  " * @preserve",
+  ...readFileSync("LICENSE", "utf8").split("\n")
+    .map(c => ` * ${c}`.trimEnd()),
+  " */",
+].join("\n");
 
 // eslint-disable-next-line max-lines-per-function
-module.exports = (grunt) => {
+module.exports = grunt => {
   loadGruntTasks(grunt);
 
   grunt.initConfig(
@@ -44,7 +44,7 @@ module.exports = (grunt) => {
       },
       "usebanner": {
         build: {
-          options: {banner: LICENSE},
+          options: {banner: licenseJS},
           files: [
             {
               expand: true,
