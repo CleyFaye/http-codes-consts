@@ -2,7 +2,7 @@
   "compilerOptions": {
     "incremental": true,
     "target": "ES2019",
-    "module": "ES2015",
+    "module": "ES2020",
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,

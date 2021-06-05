@@ -20,6 +20,8 @@ module.exports = (grunt) => {
         build: [
           "gen",
           "lib",
+        ],
+        cache: [
           "tsconfig-gen.tsbuildinfo",
           "tsconfig.tsbuildinfo",
           ".tscache",
@@ -27,8 +29,18 @@ module.exports = (grunt) => {
         ],
       },
       "ts": {
-        buildTools: {tsconfig: "./tsconfig.json"},
-        buildLibrary: {tsconfig: "./tsconfig-gen.json"},
+        buildTools: {
+          tsconfig: {
+            tsconfig: "./tsconfig.json",
+            passThrough: true,
+          },
+        },
+        buildLibrary: {
+          tsconfig: {
+            tsconfig: "./tsconfig-gen.json",
+            passThrough: true,
+          },
+        },
       },
       "usebanner": {
         build: {
@@ -65,5 +77,10 @@ module.exports = (grunt) => {
       "ts:buildLibrary",
       "usebanner:build",
     ],
+  );
+
+  grunt.registerTask(
+    "default",
+    ["build"],
   );
 };
