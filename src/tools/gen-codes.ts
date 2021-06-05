@@ -3,8 +3,8 @@ import {join} from "path";
 import {
   readFile,
   writeFile,
-  ensureDir,
-} from "fs-extra";
+  mkdir,
+} from "fs/promises";
 import {promisify} from "util";
 import parse from "csv-parse";
 
@@ -49,7 +49,7 @@ const transformResToTypescript = (res: Array<CodeDefinition>): string => {
 };
 
 console.log(`Creating output directory "${OUTPUT_DIRECTORY}"`);
-ensureDir(OUTPUT_DIRECTORY)
+mkdir(OUTPUT_DIRECTORY, {recursive: true})
   .then(() => {
     console.log(`Reading codes from ${CODE_LIST_FILE}`);
     return readFile(CODE_LIST_FILE, "utf8");
