@@ -10,6 +10,7 @@ Installation
 ------------
 
 This is on [npmjs](https://www.npmjs.com/package/@cley_faye/http-codes-consts):
+
 ```bash
 npm install @cley_faye/http-codes-consts
 ```
@@ -17,6 +18,7 @@ npm install @cley_faye/http-codes-consts
 Usage
 -----
 Constants are available as the default export:
+
 ```JavaScript
 import HttpCodes from "@cley_faye/http-codes-consts";
 console.log(HttpCodes.NotFound); // Output 404
