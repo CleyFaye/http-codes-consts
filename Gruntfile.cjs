@@ -56,11 +56,8 @@ module.exports = grunt => {
       },
       "run": {
         genCodes: {
-          cmd: "npx",
+          cmd: "node",
           args: [
-            "node",
-            "-r",
-            "esm",
             "lib/tools/gen-codes",
           ],
         },

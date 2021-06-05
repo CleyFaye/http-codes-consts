@@ -4,8 +4,10 @@
   "description": "Constants for HTTP error codes",
   "main": "lib/codes.js",
   "scripts": {
-    "prepack": "npx grunt clean build"
+    "prepack": "npm run grunt -- clean build",
+    "grunt": "npm exec grunt -- --gruntfile Gruntfile.cjs"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CleyFaye/http-codes-consts.git"
@@ -24,7 +26,6 @@
     "csv-parse": "^4.8.6",
     "eslint": "^7.28.0",
     "eslint-plugin-promise": "^5.1.0",
-    "esm": "^3.2.25",
     "grunt": "^1.0.4",
     "grunt-banner": "^0.6.0",
     "grunt-contrib-clean": "^2.0.0",
@@ -32,9 +33,6 @@
     "grunt-ts": "^6.0.0-beta.22",
     "load-grunt-tasks": "^5.1.0",
     "typescript": "^4.3.2"
-  },
-  "esm": {
-    "cache": false
   },
   "files": [
     "lib/codes.js",
